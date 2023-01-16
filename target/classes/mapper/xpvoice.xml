@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aegisep.api.xpvoice.mapper.XpvoiceMapper">
+    <select id="selectXpvoice" resultType="com.aegisep.api.xpvoice.dto.XpvoiceVo">
+        <![CDATA[
+            SELECT *
+              FROM (SELECT A.*, ROWNUM AS R
+                      FROM (SELECT A.SEQ, A.APT_CD, A.TITLE, A.B_BODY, A.SPEAKER,
+                                   A.HISTORY_SEQ,
+                                   TO_CHAR(HISTORYDATE, 'YYYY.MM.DD HH:MI:SS') AS HISTORYDATE
+                              FROM TDG_VOICE_BROADCAST_HISTORY A
+                             WHERE A.APT_CD = #{apt_cd}
+                               AND TO_CHAR(A.HISTORYDATE, 'YYYY-MM-DD') <= #{historydate}
+                             ORDER BY A.HISTORYDATE DESC
+                           )A
+                   )
+             WHERE R <= 20
+	 	]]>
+    </select>
+</mapper>

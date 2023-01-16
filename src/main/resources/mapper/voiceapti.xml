@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aegisep.api.xpvoice.mapper.VoiceAptiMapper">
+    <select id="selectVoiceApti" resultType="com.aegisep.api.xpvoice.dto.VoiceAptiVo">
+        <![CDATA[
+            SELECT A.HISTORY_SEQ  AS voice_idx,
+                 A.TITLE        AS subject,
+                 A.APT_CD       AS code
+            FROM TDG_VOICE_BROADCAST_HISTORY A
+            WHERE A.HISTORY_SEQ = #{history_seq}
+            AND A.APTI = #{apti}
+	 	]]>
+    </select>
+</mapper>
