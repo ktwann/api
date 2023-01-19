@@ -1,0 +1,2 @@
+# api
+postman -> /voiceApti SEND
