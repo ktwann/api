@@ -42,13 +42,13 @@ public class VoiceAptiService {
 
         // RestTemplate의 exchange 메소드를 통해 URL에 HttpEntity와 함께 요청
         RestTemplate restTemplate = new RestTemplate();
-        // response
+        // [응답 헤더 EUC-KR] 한글깨짐 오류 처리
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("EUC-KR")));
 
         ResponseEntity<String> responseEntity = null;
         String resultApi = "";
 
-        //해당 API의 경우 파라미터를 queryParam으로 요청
+        //해당 API의 경우 queryString 으로 요청
         String url = "https://apits.apti.co.kr/voice/W1/";
 
         UriComponents uriBuilder = UriComponentsBuilder.fromHttpUrl(url)
