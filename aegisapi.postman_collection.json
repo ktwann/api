@@ -163,11 +163,8 @@
 		},
 		{
 			"name": "voiceApti",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
@@ -207,6 +204,81 @@
 					}
 				},
 				"url": "http://localhost/xpvoice"
+			},
+			"response": []
+		},
+		{
+			"name": "https://_api/usageInfo/getUsageData",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"apt_code\":\"05869\",\"end_date\":\"2022-07-31\",\"unit\":[\"kWh\"],\"energy_type\":[\"E\"],\"start_date\":\"2022-07-01\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://h2.4st.co.kr/_api/usageInfo/index.php?mode=getUsageData",
+					"protocol": "https",
+					"host": [
+						"h2",
+						"4st",
+						"co",
+						"kr"
+					],
+					"path": [
+						"_api",
+						"usageInfo",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "apt_code",
+							"value": "05869",
+							"disabled": true
+						},
+						{
+							"key": "start_date",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "end_date",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "getUsageData"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://h2.4st.co.kr/_api/usageInfo/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"B9YtbiefTkh/KsJZx/ztGw==\",\r\n    \"pw\":\"tKe8ncM83mQNB6Jnr4kaxg==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://h2.4st.co.kr/_api/usageInfo/login"
 			},
 			"response": []
 		}

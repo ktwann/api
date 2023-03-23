@@ -67,10 +67,10 @@ public class VoiceAptiService {
                     , HttpMethod.POST
                     , entity
                     , String.class);
-        //4xx error
+            //4xx error
         }catch(HttpClientErrorException e) {
             log.info("HttpClientErrorException : " + e.getResponseBodyAsString());
-        //5xx error
+            //5xx error
         }catch(HttpServerErrorException e) {
             log.info("HttpServerErrorException : " + e.getResponseBodyAsString());
         }catch(Exception e) {
